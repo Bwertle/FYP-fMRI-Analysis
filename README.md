@@ -8,10 +8,6 @@ Order of usage
 
 Downloads data from Monash XNAT server and converts DICOMs to NIFTI format. It also reorganises data into the BIDS format. Allows choice of subject numbers and whether to download patients only, controls only or both presuming that controls are labelled \_C0* and pateients are labeled \_0*. Runs on a single CPU core, suggested 8GB RAM. 
 
-Runs python scripts in the following order: 
-* download-data.py
-* converter.py
-
 ```
 data.sh input_path
 ```
@@ -26,12 +22,8 @@ fmriprep input_folder output_folder participant --nthreads number_of_threads --m
 
 ### ica.sh
 
-Runs denoising of the data and group ICA. Runs on a single CPU, suggested 16GB RAM.
+Runs denoising of the data using a Python script and group ICA with FSL MELODIC. Runs on a single CPU, suggested 16GB RAM.
 
-The script runs in the following order:
-1. Uses fslmaths to brain strip the data using the brain mask
-2. Runs denoise.py to remove components identified by fmriprep
-3. Runs FSL MELODIC on a single core for each group. 
 ```
 data.sh Base_path_for_all_groups
 ```
@@ -39,9 +31,6 @@ data.sh Base_path_for_all_groups
 
 ### t-test.sh
 Bash script to run dual regression for each group and appropriate t-Test. 
-
-- `t-test.py` can be run as a standalone script to run a t-Test over two groups of data. It requires a .txt file with a list of the dual regression outputs for each group and the components representing key networks. Defaults to run independent t-Test however the paired t-Test can be run with the flag `--independent False`.
-
 
 Independent t-Test (default) 
 ```
