@@ -16,8 +16,12 @@ Usage: `data.sh input_path`
 ```
 
 
-### fmriprep.script
-Runs multicore using [fMRIPrep](https://fmriprep.readthedocs.io/en/stable/) which is configured as a Singularity container on M3. Needs to run separately on control and patient folers. This is structured as a job script. Submit job using `sbatch fmriprep.script`
+### [fMRIPrep](https://fmriprep.readthedocs.io/en/stable/) 
+fMRIPrep can now be run to pre-process the downloaded data. Use the command below to run fMRIPrep. It's suggested to breakdown each fMRIPrep run into a few participants using the `--participant label` flag. Suggested 48 threads with 8GB RAM per CPU. 
+```
+fmriprep input_folder output_folder participant --nthreads number_of_threads --mem-mb memory_allocation -w working_directory
+```
+
 
 ### ica.sh
 Runs denoising of the data and group ICA. Runs on a single CPU, suggested 16GB RAM.
