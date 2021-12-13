@@ -8,7 +8,7 @@ filelock==3.0.12
 idna==2.9
 isodate==0.6.0
 joblib==0.15.1
-lxml==4.5.1
+lxml==4.6.5
 networkx==2.4
 nibabel==3.1.0
 nilearn==0.6.2
